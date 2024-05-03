@@ -1,2 +1,2 @@
-# Competitive-Programming
- A repository for my competitive programming journey. Current running project is One Day One Code
+# Programming Problems
+ A repository for my programming problems journey. Current running project is One Day One Code
