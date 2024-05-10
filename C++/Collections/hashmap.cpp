@@ -55,7 +55,7 @@ class hashmap
                     hashmap_node* left = (old_node_offset + current_old_index);
                     current_old_index = left->next;
 
-                    hashmap_node* right = (new_node_offset + i);
+                    hashmap_node* right = (new_node_offset + j);
                     right->key = left->key;
                     right->value = left->value;
                     
@@ -100,7 +100,7 @@ class hashmap
     }
     void make_compact(size_t hash_code)
     {
-        hashmap_node* slice_nodes (nodes + hash_code * current_bucket_counts);
+        hashmap_node* slice_nodes = (nodes + hash_code * current_bucket_counts);
         int count = *(counts + hash_code);
 
         int current_index = 0;
@@ -112,16 +112,9 @@ class hashmap
             hashmap_node* compact_pos = (slice_nodes + i);
             compact_pos->key = current->key;
             compact_pos->value = current->value;
-            
-            if(i != count - 1)
-            {
-                compact_pos->next = i + 1;
-            }
-            else
-            {
-                *(next_avalaibles + hash_code) = i + 1;
-            }
+            compact_pos->next = i + 1;
         }
+        *(next_avalaibles + hash_code) = count;
     }
     bool safe_add(_Key key, _Value value)
     {
@@ -200,13 +193,27 @@ class hashmap
                 {
                     *(next_avalaibles + hash_code) = current_index;
                 }
-                else
+                else if(last_index != -1)
                 {
                     int next_index = check_node->next;
 
                     check_node = (check_nodes + last_index);
                     check_node->next = next_index;
                 }
+                else if(count > 1)
+                {
+                    int next_index = check_node->next;
+                    hashmap_node* next_from_first = (check_nodes + next_index);
+
+                    check_node->key = next_from_first->key;
+                    check_node->value = next_from_first->value;
+                    check_node->next = next_from_first->next;
+                }
+                else
+                {
+                    *(next_avalaibles + hash_code) = 0;
+                }
+
                 *(counts + hash_code) -= 1;
                 all_count--;
 
@@ -379,58 +386,3 @@ class hashmap
         return iterator;
     }
 };
-
-/*
-//Testing Purpose
-#include <iostream>
-void test_hashmap_int_int()
-{
-    hashmap<int, int> map;
-
-    while(true)
-    {
-        char command;
-        
-        std::cin >> command;
-        int key, value;
-
-        if(command == 'a')
-        {
-            std::cin >> key >> value;
-            map.add(key, value);
-        }
-        else if(command == 'r')
-        {
-            std::cin >> key;
-            bool succeed = map.try_get_value(key, &value);
-
-            std::cout << succeed << " " << value << std::endl;
-        }
-        else if(command == 's')
-        {
-            std::cin >> key >> value;
-
-            std::cout << map.set(key, value) << std::endl;
-        }
-        else if(command == 'm')
-        {
-            std::cin >> key;
-
-            std::cout << map.remove(key) << std::endl;
-        }
-        else if(command == 'p')
-        {
-            hashmap<int, int>::map_iterator iterator = map.create_iterator();
-            while (!iterator.is_empty())
-            {
-                std::cout << iterator.get_data().first << " " << iterator.get_data().second << std::endl;
-                iterator.next();
-            }
-        }
-        else
-        {
-            break;
-        }
-    }
-}
-*/
