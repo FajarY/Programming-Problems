@@ -1,7 +1,6 @@
 //Created By Kadek Fajar Pramartha Yasodana
 //Hashmap Implementation, with underlying container as a contigous array
 #include <functional>
-#include <iostream>
 
 template<typename _Key, typename _Value>
 class hashmap
@@ -381,7 +380,9 @@ class hashmap
     }
 };
 
+/*
 //Testing Purpose
+#include <iostream>
 void test_hashmap_int_int()
 {
     hashmap<int, int> map;
@@ -431,6 +432,5 @@ void test_hashmap_int_int()
             break;
         }
     }
-
-    return 0;
 }
+*/
