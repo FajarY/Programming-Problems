@@ -13,3 +13,8 @@
 
 - C Function Calling
     - To call the C function simply use `extern [function_name]`
+
+- Compiling
+    - Also gcc makes some headers and it will intefere with the assembly _start, so we need to add the flag -nostartfiles
+    - Also add -lc to make sure that the linked added the standard c library to the executable
+    - no-pie is to disable PIE generation for various reasons, such as compatibility with certain tools or environments.
