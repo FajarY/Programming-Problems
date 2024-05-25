@@ -9,8 +9,7 @@ _start:
     mov rsi, 12
     call _get_string
 
-    mov rdi, buffer
-    call _asm_print_string
+    call print_string
 
     call print_endl
     call _exit_success
@@ -70,13 +69,15 @@ _put_char:
     mov rdi, 1
 
     mov rsi, rsp
-    add rsp, 1
+    add rsp, 4
+    mov dword [rsi], 0
+
     mov [rsi], dl
     mov rdx, 1
 
     syscall
 
-    sub rsp, 1
+    sub rsp, 4
 
     pop rsi
     pop rdi
@@ -90,62 +91,21 @@ _asm_print_string:
     push rdi
     push rsi
 
-    loop_string:
-    cmp byte [rdi], 0
-    je end_loop
-
     mov rsi, rdi
-    mov rdi, [rsi]
+    mov rdi, [rdi]
 
-    call _put_char
-    shr rdi, 8
-    call _put_char
-    shr rdi, 8
-    call _put_char
-    shr rdi, 8
-    call _put_char
-    shr rdi, 8
-    call _put_char
-    shr rdi, 8
-    call _put_char
-    shr rdi, 8
-    call _put_char
-    shr rdi, 8
+    cmp byte dil, 0
+    je go_pop
     call _put_char
 
     mov rdi, rsi
     add rdi, 1
+    call _asm_print_string
 
-    jmp loop_string
+    go_pop:
 
-    end_loop:
-
-    pop rsi
     pop rdi
-    ret
-
-_clear_buffer:
-    push rsi
-    push rbp
-
-    mov rbp, rsi
-    add rsi, rdi
-
-    loop_buffer:
-
-    cmp rbp, rsi
-    jge end_loop_buffer
-
-    mov byte [rbp], 0
-    add rbp, 1
-
-    jmp loop_buffer
-
-    end_loop_buffer:
-
-    pop rbp
     pop rsi
-
     ret
 
 _exit_success:
