@@ -2,6 +2,7 @@
 
 - 16 Byte Alligment For Calling Function
     - I need to make sure that the stack pointer is in the multiply of 16 byte. If not segfault will occour, https://stackoverflow.com/questions/49391001/why-does-the-x86-64-amd64-system-v-abi-mandate-a-16-byte-stack-alignment
+    - Also another source : https://stackoverflow.com/questions/72779267/segmentation-fault-when-calling-printf-from-c-function-called-from-assembly
 
 - Stack Pointer
     - Since the stack is allocated in a decreasing manner, if we want to allocate some stack memory we can use `sub rsp, 8` this means allocate 8 bytes to the stack, and to pop it we can `add rsp, 8`
