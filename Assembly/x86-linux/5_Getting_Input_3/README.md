@@ -5,3 +5,6 @@
 
 - Caller saved registers
     - Also i've gotten a good grip on caller saved registers. We are not obligated to save it, hence on some subroutines those registers are not save, and i ended up need to save the register first to sp before calling a function.
+
+- Full Assembly
+    - Also this time the code is all on assembly, without the use of the c library.
