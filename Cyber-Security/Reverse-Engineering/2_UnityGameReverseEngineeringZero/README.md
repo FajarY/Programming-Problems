@@ -4,7 +4,7 @@
     - I've learn some pretty basic things about reverse engineering and how to modify the binaries. Turns out its quite easy to reverse engineer a unity game, even if its backend is il2cpp. But of course if it is obfuscated, it will be pretty hard to analyze what the fuction does.
 
 - Screenshots
-    - I've reverse engineered my favorite offline game. With respect of the game developers i will the details on how to reverse engineered it, just the screenshots of what the compiled reverse engineered app looked like.
+    - I've reverse engineered my favorite offline game. With respect of the game developers i will not show the details on how to reverse engineered it, just the screenshots of what the compiled reverse engineered app looked like, and also some short example.
     - ![Game Screenshot](./0.jpg)
     - But i could show just one example of changing the binaries
     - ![Binary Changing](./1.png)
