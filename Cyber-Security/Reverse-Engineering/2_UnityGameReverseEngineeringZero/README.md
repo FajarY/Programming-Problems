@@ -11,3 +11,5 @@
     - In this screenshot i've changed the binaries on some offset that takes an argument and move it into a register. I've changed it so that the register value don't take the argument, and instead take an immediate value that is very high. I've changed it from `mov r4, r0` to `movw r4, #0xffff`.
     - This result is valid, from the game screenshot you can see that the ingots have gone up to 65535, which is 0xffff. The initial is 5, and after i finished the level i got 1 ingot, resulting in 65540
     - There are other things that I've changed but i will not state it.
+
+### The image regarding of the output from the reverse engineering process is deleted, for the respect of the game developer

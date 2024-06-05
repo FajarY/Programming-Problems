@@ -8,3 +8,5 @@
     - ![Purchasing](./2.jpg)
     - And also this is my attempt to get the dump file of a protected game
     - ![Protection Dumping](./1.png)
+
+### The image regarding of the output from the reverse engineering process is deleted, for the respect of the game developer
