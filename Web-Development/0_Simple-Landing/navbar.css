@@ -1,0 +1,30 @@
+.navbar
+{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    list-style-type: none;
+    overflow: hidden;
+
+    li
+    {
+        float: left;
+        background-color: black;
+        padding: 16px;
+    }
+    li a
+    {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+    }
+    li:hover:nth-child(n + 2)
+    {
+        a
+        {
+            color: black;
+        }
+        background-color: white;
+    }
+}
