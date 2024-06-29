@@ -1,0 +1,18 @@
+.cool_button
+{
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+    
+    color: white;
+    background-color: #7ba5ff;
+}
+
+.cool_button:active
+{
+    background-color: rgb(60, 211, 241);
+}
